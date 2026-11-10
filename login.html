@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход — GEEKSTORE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <a href="index.html" class="logo">GEEK<span>STORE</span></a>
+      <nav class="nav-links">
+        <a href="index.html">Каталог</a>
+      </nav>
+      <div class="header-actions">
+        <button class="cart-btn" id="cartBtn">
+          🛒
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="auth-page">
+    <div class="auth-card">
+      <h1>Вход</h1>
+      <p>Войдите в личный кабинет, чтобы отслеживать заказы и сохранять товары в избранное.</p>
+      <form id="loginForm" class="auth-form">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="loginEmail" placeholder="email@example.com" required>
+        </div>
+        <div class="form-group">
+          <label>Пароль</label>
+          <input type="password" id="loginPassword" placeholder="••••••••" required>
+        </div>
+        <button class="btn btn-primary auth-btn" type="submit">Войти</button>
+      </form>
+      <div class="auth-divider">Или</div>
+      <div class="auth-footer">
+        Нет аккаунта? <a href="#">Регистрация</a>
+      </div>
+      <div class="demo-info">
+        <strong>Демо-данные:</strong><br>
+        Email: demo@geekstore.ru<br>
+        Пароль: demo123
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        &copy; 2024 GEEKSTORE. Бесплатный интернет-магазин электроники.
+      </div>
+    </div>
+  </footer>
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="js/config.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,12 +1,17 @@
-/* ADMIN — АДМИН-ПАНЕЛЬ */
+/* ==========================================
+   ADMIN — АДМИН-ПАНЕЛЬ
+   ========================================== */
+
 let adminProducts = [];
 let editingId = null;
+
 async function initAdmin() {
   await loadProducts();
   adminProducts = [...(productsCache || [])];
   renderAdminTable();
   setupAdminEvents();
 }
+
 function renderAdminTable() {
   const t = document.getElementById('adminTableBody');
   if (!t) return;
@@ -20,6 +25,7 @@ function renderAdminTable() {
       <button class="btn-delete" onclick="deleteProduct(${p.id})" title="Уд.">🗑️</button></td>
     </tr>`).join('');
 }
+
 function setupAdminEvents() {
   const oa = document.getElementById('openAddForm');
   const ce = document.getElementById('cancelEdit');
@@ -39,6 +45,7 @@ function setupAdminEvents() {
     ac.innerHTML = '<option value="">Все</option>' + cats.map(c => `<option value="${c}">${n[c] || c}</option>`).join('');
   }
 }
+
 function openAddForm() {
   editingId = null;
   document.getElementById('adminForm').style.display = 'block';
@@ -46,6 +53,7 @@ function openAddForm() {
   document.getElementById('deleteProduct').style.display = 'none';
   document.querySelector('#adminForm h2').textContent = 'Добавить товар';
 }
+
 function editProduct(id) {
   const p = adminProducts.find(x => x.id === id);
   if (!p) return;
@@ -65,10 +73,12 @@ function editProduct(id) {
   document.querySelector('#adminForm h2').textContent = 'Редактировать товар';
   document.getElementById('deleteProduct').style.display = 'inline-block';
 }
+
 function cancelEditForm() {
   document.getElementById('adminForm').style.display = 'none';
   editingId = null;
 }
+
 function saveProduct() {
   const pd = {
     id: editingId || Date.now(),
@@ -95,6 +105,7 @@ function saveProduct() {
   cancelEditForm();
   showToast('Сохранено', 'success');
 }
+
 function deleteProduct(id) {
   if (!confirm('Удалить товар?')) return;
   adminProducts = adminProducts.filter(x => x.id !== id);
@@ -104,6 +115,7 @@ function deleteProduct(id) {
   cancelEditForm();
   showToast('Удалено', 'success');
 }
+
 function filterAdmin(q) {
   document.querySelectorAll('#adminTableBody tr').forEach(r => {
     r.style.display = r.textContent.toLowerCase().includes(q.toLowerCase()) ? '' : 'none';

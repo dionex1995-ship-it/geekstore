@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GEEKSTORE — интернет-магазин электроники</title>
-  <meta name="description" content="Смартфоны, ноутбуки, наушники и аксессуары по лучшим ценам.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -22,79 +21,13 @@
     <div class="header-container">
       <a href="index.html" class="logo">GEEK<span>STORE</span></a>
       <nav class="nav-links">
-        <a href="index.html">Каталог</a>
-        <a href="#">Новинки</a>
-        <a href="#">Акции</a>
-        <a href="login.html">Вход</a>
+        <a href="index.html">Каталог</a><a href="#">Новинки</a><a href="#">Акции</a><a href="login.html">Вход</a>
       </nav>
       <div class="header-actions">
         <button class="search-btn" title="Поиск">🔍</button>
         <button class="cart-btn" id="cartBtn">🛒<span class="cart-count" id="cartCount">0</span></button>
         <button class="auth-btn" id="authBtn">👤</button>
         <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
-      </div>
-    </div>
-  </header>
-  <div class="search-dropdown" id="searchDropdown">
-    <input type="text" id="searchInput" placeholder="Поиск товаров..." autocomplete="off">
-    <div class="search-results" id="searchResults"></div>
-  </div>
-  <div class="mobile-menu" id="mobileMenu">
-    <div class="mobile-menu-header"><span>Меню</span><button class="close-menu-btn" id="closeMenuBtn">✕</button></div>
-    <nav>
-      <a href="index.html">Главная</a>
-      <a href="#">Смартфоны</a>
-      <a href="#">Ноутбуки</a>
-      <a href="#">Планшеты</a>
-      <a href="#">Наушники</a>
-      <a href="#">Аксессуары</a>
-      <a href="cart.html">Корзина</a>
-      <a href="login.html">Вход</a>
-    </nav>
-  </div>
-  <main>
-    <div class="container">
-      <section class="hero">
-        <div class="hero-content">
-          <h1>Технологии <span>будущего</span></h1>
-          <p>Более 5000 товаров электроники от ведущих брендов.</p>
-        </div>
-        <div class="hero-image"><img src="images/placeholder.png" alt="Баннер" onerror="this.style.display='none'"></div>
-      </section>
-      <section class="mt-40 mb-40">
-        <div class="section-title">Категории</div>
-        <div class="products-grid" id="categoriesGrid"></div>
-      </section>
-      <section>
-        <div class="catalog-header">
-          <h2>Популярные товары</h2>
-          <select class="sort-select" id="sortSelect">
-            <option value="default">По умолчанию</option>
-            <option value="price-asc">Цена: дешевые сначала</option>
-            <option value="price-desc">Цена: дорогие сначала</option>
-            <option value="rating">Рейтинг</option>
-          </select>
-        </div>
-        <div class="filters-container">
-          <aside class="filters-sidebar">
-            <h3>Фильтры</h3>
-            <div class="filter-group"><label>Категория</label><div id="categoryFilters"></div></div>
-            <div class="filter-group"><label>Бренд</label><div id="brandFilters"></div></div>
-            <div class="filter-group"><label>Цена</label><div class="price-range">
-              <input type="number" id="priceMin" placeholder="от">
-              <input type="number" id="priceMax" placeholder="до">
-            </div></div>
-            <div class="filter-group"><label>Наличие</label><label class="filter-checkbox"><input type="checkbox" id="filterInStock"><span>В наличии</span></label></div>
-            <button class="btn-reset-filters" id="resetFilters">Сбросить фильтры</button>
-          </aside>
-          <div style="flex:1;">
-            <div id="productsCount"></div>
-            <div class="products-grid" id="productsGrid"></div>
-          </div>
-        </div>
-      </section>
-    </div>
-  </main>
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
@@ -136,3 +69,59 @@
   <script src="js/main.js"></script>
 </body>
 </html>
+  <main>
+    <div class="container">
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Технологии <span>будущего</span></h1>
+          <p>Более 5000 товаров электроники от ведущих брендов.</p>
+        </div>
+        <div class="hero-image"><img src="images/placeholder.png" alt="Баннер" onerror="this.style.display='none'"></div>
+      </section>
+      <section class="mt-40 mb-40">
+        <div class="section-title">Категории</div>
+        <div class="products-grid" id="categoriesGrid"></div>
+      </section>
+      <section>
+        <div class="catalog-header">
+          <h2>Популярные товары</h2>
+          <select class="sort-select" id="sortSelect">
+            <option value="default">По умолчанию</option>
+            <option value="price-asc">Цена: дешевые сначала</option>
+            <option value="price-desc">Цена: дорогие сначала</option>
+            <option value="rating">Рейтинг</option>
+          </select>
+        </div>
+        <div class="filters-container">
+          <aside class="filters-sidebar">
+            <h3>Фильтры</h3>
+            <div class="filter-group"><label>Категория</label><div id="categoryFilters"></div></div>
+            <div class="filter-group"><label>Бренд</label><div id="brandFilters"></div></div>
+            <div class="filter-group"><label>Цена</label><div class="price-range">
+              <input type="number" id="priceMin" placeholder="от"><input type="number" id="priceMax" placeholder="до">
+            </div></div>
+            <div class="filter-group"><label>Наличие</label><label class="filter-checkbox"><input type="checkbox" id="filterInStock"><span>В наличии</span></label></div>
+            <button class="btn-reset-filters" id="resetFilters">Сбросить фильтры</button>
+          </aside>
+          <div style="flex:1;">
+            <div id="productsCount"></div>
+            <div class="products-grid" id="productsGrid"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+      </div>
+    </div>
+  </header>
+  <div class="search-dropdown" id="searchDropdown">
+    <input type="text" id="searchInput" placeholder="Поиск товаров..." autocomplete="off">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header"><span>Меню</span><button class="close-menu-btn" id="closeMenuBtn">✕</button></div>
+    <nav>
+      <a href="index.html">Главная</a><a href="#">Смартфоны</a><a href="#">Ноутбуки</a><a href="#">Планшеты</a>
+      <a href="#">Наушники</a><a href="#">Аксессуары</a><a href="cart.html">Корзина</a><a href="login.html">Вход</a>
+    </nav>
+  </div>

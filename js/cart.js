@@ -1,15 +1,21 @@
-/* CART — КОРЗИНА (localStorage) */
+/* ==========================================
+   CART — КОРЗИНА (localStorage)
+   ========================================== */
+
 let cart = [];
+
 function loadCart() {
   const stored = localStorage.getItem(CONFIG.storageKeys.cart);
   cart = stored ? JSON.parse(stored) : [];
   updateCartCount();
 }
+
 function saveCart() {
   localStorage.setItem(CONFIG.storageKeys.cart, JSON.stringify(cart));
   updateCartCount();
   dispatchCartEvent();
 }
+
 function updateCartCount() {
   const countEl = document.getElementById('cartCount');
   if (countEl) {
@@ -18,9 +24,11 @@ function updateCartCount() {
     countEl.style.display = total > 0 ? 'flex' : 'none';
   }
 }
+
 function addToCart(productId, qty = 1) {
   const product = getProductById(productId);
   if (!product) return false;
+
   const existing = cart.find(item => item.id === productId);
   if (existing) {
     existing.qty += qty;
@@ -31,11 +39,13 @@ function addToCart(productId, qty = 1) {
   showToast('Товар добавлен в корзину', 'success');
   return true;
 }
+
 function removeFromCart(productId) {
   cart = cart.filter(item => item.id !== productId);
   saveCart();
   renderCart();
 }
+
 function updateQty(productId, qty) {
   if (qty < 1) {
     removeFromCart(productId);
@@ -48,11 +58,13 @@ function updateQty(productId, qty) {
     renderCart();
   }
 }
+
 function clearCart() {
   cart = [];
   saveCart();
   renderCart();
 }
+
 function getCartItems() {
   return cart.map(item => {
     const product = getProductById(item.id);
@@ -60,15 +72,18 @@ function getCartItems() {
     return { ...product, qty: item.qty };
   }).filter(Boolean);
 }
+
 function getCartTotal() {
   return cart.reduce((sum, item) => {
     const product = getProductById(item.id);
     return product ? sum + product.price * item.qty : sum;
   }, 0);
 }
+
 function dispatchCartEvent() {
   window.dispatchEvent(new CustomEvent('cartUpdated'));
 }
+
 function showToast(message, type = 'success') {
   const container = document.getElementById('toastContainer');
   if (!container) return;

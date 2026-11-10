@@ -16,24 +16,28 @@
   <header class="header">
     <div class="header-container">
       <a href="index.html" class="logo">GEEK<span>STORE</span></a>
+
       <nav class="nav-links">
         <a href="index.html">К магазину</a>
         <a href="#">Выход</a>
       </nav>
     </div>
   </header>
+
   <div class="admin-page">
     <div class="container">
       <div class="admin-header">
         <h1>Админ-панель</h1>
         <button class="btn btn-primary" id="openAddForm">+ Добавить товар</button>
       </div>
+
       <div class="admin-toolbar">
         <input type="text" id="adminSearch" placeholder="Поиск товаров...">
         <select id="adminCategoryFilter">
           <option value="">Все категории</option>
         </select>
       </div>
+
       <div class="admin-table-container">
         <table class="admin-table">
           <thead>
@@ -48,9 +52,11 @@
             </tr>
           </thead>
           <tbody id="adminTableBody">
+            <!-- Заполняется JS -->
           </tbody>
         </table>
       </div>
+
       <div class="admin-form" id="adminForm" style="display:none;">
         <h2>Редактирование товара</h2>
         <form id="productForm">
@@ -102,10 +108,11 @@
           <div class="form-group">
             <label>Изображение (URL)</label>
             <input type="text" id="editImage" placeholder="https://example.com/image.jpg">
+            <p class="specs-json" style="font-size:11px; color:var(--text-muted); margin-top:4px;">Оставьте пустым для placeholder</p>
           </div>
           <div class="form-group form-group-full">
             <label>Характеристики (JSON)</label>
-            <textarea id="editSpecs" rows="4" class="specs-json">{"Экран": "6.1 дюйма"}</textarea>
+            <textarea id="editSpecs" rows="4" class="specs-json" placeholder='{"Экран": "6.1 дюйма", "Процессор": "A17 Pro"}'>{"Экран": "6.1 дюйма"}</textarea>
           </div>
           <div style="display:flex; gap:12px;">
             <button type="submit" class="btn btn-primary">Сохранить</button>
@@ -116,6 +123,7 @@
       </div>
     </div>
   </div>
+
   <footer class="footer">
     <div class="container">
       <div class="footer-bottom">
@@ -123,7 +131,9 @@
       </div>
     </div>
   </footer>
+
   <div class="toast-container" id="toastContainer"></div>
+
   <script src="js/config.js"></script>
   <script src="js/api.js"></script>
   <script src="js/cart.js"></script>

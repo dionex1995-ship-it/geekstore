@@ -1,10 +1,15 @@
-/* AUTH — АВТОРИЗАЦИЯ */
+/* ==========================================
+   AUTH — АВТОРИЗАЦИЯ
+   ========================================== */
+
 let currentUser = null;
+
 function initAuth() {
   const stored = localStorage.getItem(CONFIG.storageKeys.user);
   currentUser = stored ? JSON.parse(stored) : null;
   updateAuthUI();
 }
+
 function updateAuthUI() {
   const authBtn = document.getElementById('authBtn');
   if (authBtn) {
@@ -12,7 +17,7 @@ function updateAuthUI() {
       authBtn.innerHTML = '👤';
       authBtn.title = `Вход: ${currentUser.name}`;
       authBtn.onclick = () => {
-        if (confirm(`Вы вошли как ${currentUser.name}.\nВыйти?`)) logout();
+        if(confirm(`Вы вошли как ${currentUser.name}.\nВыйти?`)) logout();
       };
     } else {
       authBtn.innerHTML = '👤';
@@ -24,6 +29,7 @@ function updateAuthUI() {
     }
   }
 }
+
 function login(email, password) {
   if (email === CONFIG.demoUser.email && password === CONFIG.demoUser.password) {
     currentUser = { email, name: CONFIG.demoUser.name };
@@ -37,18 +43,27 @@ function login(email, password) {
   showToast('Неверный email или пароль', 'error');
   return false;
 }
+
 function logout() {
   currentUser = null;
   localStorage.removeItem(CONFIG.storageKeys.user);
   updateAuthUI();
   showToast('Вы вышли из аккаунта', 'success');
 }
-function isLoggedIn() { return !!currentUser; }
-function getCurrentUser() { return currentUser; }
+
+function isLoggedIn() {
+  return !!currentUser;
+}
+
+function getCurrentUser() {
+  return currentUser;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const doLogin = document.getElementById('doLogin');
   const closeAuth = document.getElementById('closeAuthModal');
   const loginForm = document.getElementById('loginForm');
+
   if (doLogin) {
     doLogin.addEventListener('click', (e) => {
       e.preventDefault();
@@ -57,15 +72,20 @@ document.addEventListener('DOMContentLoaded', () => {
       login(email, password);
     });
   }
+
   if (closeAuth) {
     closeAuth.addEventListener('click', () => {
       document.getElementById('authModal').classList.remove('active');
     });
   }
+
   if (loginForm) {
-    loginForm.addEventListener('submit', (e) => { e.preventDefault(); });
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+    });
   }
 });
+
 window.login = login;
 window.logout = logout;
 window.isLoggedIn = isLoggedIn;

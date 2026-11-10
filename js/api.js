@@ -1,5 +1,9 @@
-/* API — РАБОТА С ТОВАРАМИ (products.json) */
+/* ==========================================
+   API — РАБОТА С ТОВАРАМИ (products.json)
+   ========================================== */
+
 let productsCache = null;
+
 async function loadProducts() {
   if (productsCache) return productsCache;
   try {
@@ -12,14 +16,17 @@ async function loadProducts() {
     return [];
   }
 }
+
 function getProductById(id) {
   const products = productsCache || [];
   return products.find(p => p.id === parseInt(id)) || null;
 }
+
 function getProductsByCategory(category) {
   const products = productsCache || [];
   return products.filter(p => p.category === category);
 }
+
 function searchProducts(query) {
   const products = productsCache || [];
   const q = query.toLowerCase();
@@ -29,12 +36,15 @@ function searchProducts(query) {
     p.category.toLowerCase().includes(q)
   );
 }
+
 function getUniqueCategories(products) {
   return [...new Set(products.map(p => p.category))];
 }
+
 function getUniqueBrands(products) {
   return [...new Set(products.map(p => p.brand))];
 }
+
 function formatPrice(price) {
   return new Intl.NumberFormat('ru-RU', {
     style: 'currency',

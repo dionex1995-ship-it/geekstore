@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Корзина — GEEKSTORE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="page-loading" id="pageLoading">
+    <div class="spinner"></div>
+    <div style="margin-top:16px;color:var(--text-secondary);font-size:14px;">Загрузка...</div>
+  </div>
+  <header class="header">
+    <div class="header-container">
+      <a href="index.html" class="logo">GEEK<span>STORE</span></a>
+      <nav class="nav-links"><a href="index.html">Каталог</a><a href="#">Новинки</a><a href="#">Акции</a><a href="login.html">Вход</a></nav>
+      <div class="header-actions">
+        <button class="search-btn" title="Поиск">🔍</button>
+        <button class="cart-btn" id="cartBtn">🛒<span class="cart-count" id="cartCount">0</span></button>
+        <button class="auth-btn" id="authBtn">👤</button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+      </div>
+    </div>
+  </header>
+  <div class="search-dropdown" id="searchDropdown">
+    <input type="text" id="searchInput" placeholder="Поиск товаров..." autocomplete="off">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header"><span>Меню</span><button class="close-menu-btn" id="closeMenuBtn">✕</button></div>
+    <nav><a href="index.html">Главная</a><a href="#">Смартфоны</a><a href="#">Ноутбуки</a><a href="#">Планшеты</a><a href="#">Наушники</a><a href="#">Аксессуары</a><a href="cart.html">Корзина</a><a href="login.html">Вход</a></nav>
+  </div>
+  <main>
+    <div class="container">
+      <div class="cart-header"><h1>Корзина</h1><a href="index.html" class="btn btn-outline">Продолжить покупки</a></div>
+      <div id="emptyCart" class="empty-cart hidden"><h2>Корзина пуста</h2><p>Добавьте товары из каталога.</p><a href="index.html" class="btn btn-primary">Перейти в каталог</a></div>
+      <div id="cartContent">
+        <div style="display:grid;grid-template-columns:1fr 380px;gap:30px;">
+          <div class="cart-items" id="cartItemsList"></div>
+          <div class="cart-summary"><h2>Итого</h2>
+            <div class="summary-row"><span>Товары</span><span id="summaryItems">0 ₽</span></div>
+            <div class="summary-row"><span>Доставка</span><span id="summaryDelivery">Бесплатно</span></div>
+            <div class="summary-row total"><span>Всего</span><span id="summaryTotal">0 ₽</span></div>
+            <div class="cart-actions">
+              <button class="btn btn-primary btn-checkout" id="checkoutBtn">Оформить заказ</button>
+              <button class="btn btn-clear-cart" id="clearCartBtn">Очистить корзину</button>
+            </div>
+          </div>
+        </div>
+        <div class="checkout-form" id="checkoutForm" style="display:none;"><h2>Оформление заказа</h2>
+          <form id="orderForm">
+            <div class="form-row"><div class="form-group"><label>Имя</label><input type="text" id="orderName" placeholder="Иван" required></div><div class="form-group"><label>Телефон</label><input type="tel" id="orderPhone" placeholder="+7 900 000-00-00" required></div></div>
+            <div class="form-group"><label>Email</label><input type="email" id="orderEmail" placeholder="email@example.com" required></div>
+            <div class="form-group"><label>Адрес доставки</label><input type="text" id="orderAddress" placeholder="г. Москва, ул. Примерная, д. 1" required></div>
+            <div class="form-group"><label>Комментарий</label><textarea id="orderComment" rows="3" placeholder="Пожелания..."></textarea></div>
+            <button class="btn btn-success btn-full" type="submit">Подтвердить заказ</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="container"><div class="footer-bottom">&copy; 2024 GEEKSTORE.</div></div>
+  </footer>
+  <div class="toast-container" id="toastContainer"></div>
+  <div class="modal-overlay" id="authModal">
+    <div class="modal">
+      <div class="modal-header"><h3>Вход</h3><button class="close-modal" id="closeAuthModal">✕</button></div>
+      <div class="modal-body">
+        <div class="auth-form">
+          <div class="form-group"><label>Email</label><input type="email" id="loginEmail" placeholder="email@example.com"></div>
+          <div class="form-group"><label>Пароль</label><input type="password" id="loginPassword" placeholder="••••••••"></div>
+          <button class="btn btn-primary auth-btn" id="doLogin">Войти</button>
+        </div>
+      </div>
+      <div class="modal-footer"><p>Нет аккаунта? <a href="login.html" style="color:var(--accent);font-weight:600;">Регистрация</a></p></div>
+    </div>
+  </div>
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
